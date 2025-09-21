@@ -31,21 +31,28 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav">
-      <a href="index.html">
-        <img src="/assets/logo.png" alt="NeuraGlu Logo" class="logo-img">
-      </a>
-      <nav aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="data-flow.html">Data flow</a>
-        <a href="#faq">FAQ</a>
-        <a href="#early" class="btn btn--primary nav__cta" id="nav-early">Get Early Access</a>
-      </nav>
-    </div>
-  </header>
+ <header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="logo-link">
+      <img src="/assets/logo.png" alt="NeuraGlu" class="logo-img">
+    </a>
 
+    <!-- mobile toggle button -->
+    <button id="nav-toggle" class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      ☰
+    </button>
+
+    <!-- links + cta -->
+    <nav id="nav-links" class="nav__links" role="navigation">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="data-flow.html">Data flow</a>
+      <a href="#faq">FAQ</a>
+      <a id="nav-early" class="btn btn--brand nav__cta" href="#early-access">Get Early Access</a>
+    </nav>
+  </div>
+</header>
+  
      <main id="main">
         <!-- Hero -->
          <section class="section hero" id="hero">
