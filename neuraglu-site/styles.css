@@ -817,3 +817,20 @@ textarea {
 @media (max-width: 860px) {
   .btn.nav__cta { position: static; }
 }
+
+.btn--brand {
+  background: linear-gradient(90deg, #7cf0d4, #a78bfa);
+  color: #000;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn--brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
