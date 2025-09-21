@@ -15,20 +15,27 @@
   <body>
     <a class="skip" href="#main">Skip to content</a>
 
-    <header class="site-header">
-      <div class="container nav">
-        <a href="index.html">
-          <img src="/assets/logo.png" alt="NeuraGlu Logo" class="logo-img">
-         </a>
-        <nav aria-label="Primary">
-          <a href="index.html#features">Features</a>
-          <a href="index.html#how">How it works</a>
-          <a href="data-flow.html" class="is-active">Data flow</a>
-          <a href="index.html#faq">FAQ</a>
-          <a href="index.html#early" class="btn btn--primary">Get Early Access</a>
-        </nav>
-      </div>
-    </header>
+   <header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="logo-link">
+      <img src="/assets/logo.png" alt="NeuraGlu" class="logo-img">
+    </a>
+
+    <!-- hamburger -->
+    <button id="nav-toggle" class="nav__toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      ☰
+    </button>
+
+    <!-- nav links -->
+    <nav id="nav-links" class="nav__links" role="navigation">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="data-flow.html">Data flow</a>
+      <a href="index.html#faq">FAQ</a>
+      <a id="nav-early" class="btn btn--brand nav__cta" href="index.html#early-access">Get Early Access</a>
+    </nav>
+  </div>
+</header>
 
     <main id="main">
       <!-- Page intro / overview -->
