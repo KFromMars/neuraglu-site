@@ -834,3 +834,16 @@ textarea {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+:root {
+  --font-sans: "Inter", "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Global */
+html, body { font-family: var(--font-sans); }
+
+/* Make sure legal pages inherit the same font */
+.page, .legal-container,
+.legal-container h1, .legal-container h2, .legal-container p, .legal-container li {
+  font-family: var(--font-sans);
+}
