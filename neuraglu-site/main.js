@@ -396,52 +396,6 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   requestAnimationFrame(frame);
 })();
 
-(function(){
-  const form = document.getElementById('eaForm');
-  if(!form) return;
-  
-  const nameEl = document.getElementById('ea-name');
-  const emailEl = document.getElementById('ea-email');
-  const detailsEl = document.getElementById('ea-details');
-  const consentEl = document.getElementById('ea-consent');
-  const submitBtn = document.getElementById('ea-submit');
-  const okMsg = document.getElementById('ea-success');
-  const errMsg = document.getElementById('ea-error');
-
-  const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v||'').trim());
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    okMsg.hidden = true; errMsg.hidden = true;
-
-    // simple checks
-    if (!nameEl.ariaValueMax.trim()) { nameEl.focus(); errMsg.hidden=false; errMsg.Msg.textContent='Enter your name.'; return; }
-    if (!emailOk(emailEl.value)) { emailEl.focus(); errMsg.hiddn=false; errMsg.textContent='Enter a valid enail.'; return; }
-    if (!detailsEl.value.trim()) { detailsEl.focus(); errMsg.hidden=false; errMsg.textContent='Details are required.'; return; }
-    if (!consentEl.checked) { errMsg.hidden=false; errMsg.textContent='Please accept the content.'; return; }
-    
-    submitBtn.disabled = true; const prev= submitBtn.textContent; submitBtn.textContent = 'Sending...';
-
-    try {
-      const resp = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      });
-      if (resp.ok) {
-        form.reset();
-        okMsg.hidden = false;
-      } else {
-        errMsg.hidden = false; errMsg.textContent = 'Could not send. Please try again.';
-      }
-    } catch (err) {
-      console.error(err);
-      errMsg.hidden = false; errMsg.textContent = 'Network error. Please try again.';
-    } finally {
-      submitBtn.disabled = false; submitBtn.textContent = prev;
-    }
-  });
-})();
 
 (function() {
   const target = document.getElementById('early-access');
@@ -492,6 +446,70 @@ document.addEventListener("DOMContentLoaded", () => {
   footerLinks.forEach(link => {
     if (link.getAttribute("href") === currentPage) {
       link.setAttribute("aria-current", "page");
+    }
+  });
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form      = document.getElementById("ea-form");
+  if (!form) return;
+
+  const nameEl    = document.getElementById("ea-name");
+  const emailEl   = document.getElementById("ea-email");
+  const detailsEl = document.getElementById("ea-details");
+  const consentEl = document.getElementById("ea-consent");
+  const statusEl  = document.getElementById("ea-status");  // <p id="ea-status" hidden>
+
+  const showStatus = (msg, isError = false) => {
+    if (!statusEl) return;
+    statusEl.hidden = false;
+    statusEl.classList.toggle("error", !!isError);
+    statusEl.textContent = msg;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const action = form.getAttribute("action");
+    if (!action) { showStatus("Form error: missing action URL.", true); return; }
+
+    const name    = (nameEl?.value || "").trim();
+    const email   = (emailEl?.value || "").trim();
+    const details = (detailsEl?.value || "").trim();
+
+    if (!email) { showStatus("Please enter a valid email.", true); emailEl?.focus(); return; }
+    if (consentEl && !consentEl.checked) { showStatus("Please accept the consent.", true); return; }
+
+    showStatus("Sending…", false);
+
+    try {
+      const data = new FormData(form);
+      if (!data.has("name"))    data.set("name", name);
+      if (!data.has("email"))   data.set("email", email);
+      if (!data.has("details")) data.set("details", details);
+
+      const res = await fetch(action, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (res.ok) {
+        form.reset();
+        showStatus("Thanks! You’re on the list.", false);
+      } else {
+        let msg = "Submission failed. Please try again.";
+        try {
+          const j = await res.json();
+          if (j?.errors?.length) msg = j.errors[0].message;
+        } catch {}
+        showStatus(msg, true);
+      }
+    } catch {
+      showStatus("Network error. Please try again.", true);
     }
   });
 });
