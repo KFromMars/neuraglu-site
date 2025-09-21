@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeuraGlu – Personalized, Real‑Time Carb Suggestions</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="NeuraGlu – Personalized, Real‑Time Carb Suggestions" />
+    <meta property="og:description" content="Detect hypoglycemia early and get precise, personalized carb suggestions." />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://your-site-url.com" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NeuraGlu – Personalized, Real‑Time Carb Suggestions" />
+    <meta name="twitter:description" content="Detect hypoglycemia early and get precise, personalized carb suggestions." />
+    <meta name="twitter:image" content="assets/og-image.png" />
+  </head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html">
+        <img src="assets/logo.png" alt="NeuraGlu" class="logo" />
+      </a>
+      <nav aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="data-flow.html">Data flow</a>
+        <a href="#faq">FAQ</a>
+        <a href="#early" class="btn btn--primary nav__cta" id="nav-early">Get Early Access</a>
+      </nav>
+    </div>
+  </header>
+
+     <main id="main">
+        <!-- Hero -->
+         <section class="section hero" id="hero">
+           <div class="container hero__grid">
+             <div class="hero__copy reveal">
+                <h1> Personalized, real-time carb suggestions - exactly when you need them. </h1>
+                <p class="muted">
+                    NeuraGlu detects hypoglycemia early and calculates the <strong>right carb amount</strong> for your body,
+                    using your glucose data, insulin intake, activity, and history.
+                </p>
+                <div class="hero__cta">
+                    <a href="#early-access" class="btn btn--primary" id="cta-early">Get Early Access</a>
+                    <a href="#how" class="btn btn--ghost">See How It Works</a>
+                    </div>
+                    <small class="muted">Privacy-first • Works with CGM & manual entry • Adapts continuously</small>
+                    </div>
+
+                    <!-- Simple placeholder for the data-flow visual-->
+                     <div class="hero__art hero-parallax">
+                       <img src="assets/low-glucose-dizzy.png" 
+                            alt="Dizzy figure with low glucose popup" 
+                            class="hero-illustration">
+                     </div>
+                 </div>
+                 </section>
+
+                 <!-- Features-->
+                  <section class="section" id="features">
+                    <div class="container">
+                        <h2>Built for precise, timely decisions</h2>
+                        <div class="grid-4">
+                            <article class="card tilt reveal">
+                                <div class="card__shine" aria-hidden="true"></div>
+                                <h3>Real-time Hypo Detection</h3>
+                                <p>Continuously monitors trends to anticipate hypoglycemia before it hits.</p>
+                                </article>
+                                <article class="card tilt reveal">
+                                    <div class="card__shine" aria-hidden="true"></div>
+                                    <h3>Personalized Carb Dose</h3>
+                                    <p>Calculates an exact carb amount tailored to your insulin sensitivity.</p>
+                                    </article>
+                                    <article class="card tilt reveal">
+                                        <div class="card__shine" aria-hidden="true"></div>
+                                        <h3>Continuous Learning</h3>
+                                        <p> Improves with every reading, factoring history and response to carbs.</p>
+                                        </article>
+                                        <article class="card tilt reveal">
+                                            <div class="card__shine" aria-hidden="true"></div>
+                                            <h3>Seamless Inputs</h3>
+                                            <p>Works with CGMs or manual entries, plus insulin and activity data.</p>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- How it works -->
+                                <section class="section" id="how">
+                                  <div class="container">
+                                    <h2>From your data to a personalized carb suggestion</h2>
+                                    <div class="grid-4">
+                                      <div class="step reveal">
+                                        <span class="step__num">1</span>
+                                        <div><b>Connect or Log</b><p>Link your CGM or enter glucose manually.</p></div>
+                                      </div>
+                                      <div class="step reveal">
+                                        <span class="step__num">2</span>
+                                        <div><b>Add Context</b><p>Provide weight, age, insulin intake, and activity.</p></div>
+                                      </div>
+                                      <div class="step reveal">
+                                        <span class="step__num">3</span>
+                                        <div><b>Model Computes ISF</b><p>We refine your insulin sensitivity factor from your data.</p></div>
+                                      </div>
+                                      <div class="step reveal">
+                                        <span class="step__num">4</span>
+                                        <div><b>Precise Carb Suggestion</b><p>On hypo risk, you get a real-time carb dose suggestion.</p></div>
+                                      </div>
+                                  </div>
+                                </section>
+
+                                <!-- Data Flow (will be made interactive later) -->
+                                <section class="section section--elev" id="data-flow">
+                                  <div class="container">
+                                    <div class="dataflow-copy">
+                                      <h2>How NeuraGlu turns your data into the <span class="grad-text">right carbs at the right time</span></h2>
+                                      <p class="muted">
+                                        We ingest <b>Blood Glucose</b>, <b>Insulin</b>, <b>Activity</b>, <b>Weight &amp; Age</b>, and <b>Carb Response History</b>.
+                                        Our real-time model estimates insulin sensitivity and projects near-term glucose movement, then recommends a
+                                        <b>precise carb amount</b> to offset hypoglycemia risk.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </section>
+
+                                <section class="section" id="early-access">
+                                  <div class="container">
+                                    <h2>Get Early Access</h2>
+                                    <p class="muted">Join the waitlist or ask a question-details required so we can help.</p>
+                  
+
+                                    <form id="eaForm" class="cta-form" action="https://formspree.io/f/mvgwpglj" method="POST" novalidate>
+                                      <!-- honeypot-->
+                                       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+
+                                       <div class="form-row">
+                                        <label class="sr-only" for="ea-name">Name</label>
+                                        <input id="ea-name" name="name" type="text" placeholder="Your Name" required>
+                                       </div>
+
+                                       <div class="form-row">
+                                       <label class="sr-only" for="ea-email">Email</label>
+                                       <input id="ea-email" name="email" type="email" placeholder="Email address" required>
+                                      </div>
+                                      
+                                      <div class="form-row">
+                                        <label class="sr-only" for="ea-details">Details</label>
+                                        <textarea id="ea-details" name="details" rows="4" placeholder="Tell us about your diabetes setup or your current issues with managing diabetes (required)" required></textarea>
+                                      </div>
+                                      
+                                      <!-- Optional: tag for filtering in Inbox-->
+                                       <input type="hidden" name="source" value="neuraglu-site-early-access">
+
+                                       <label class="consent">
+                                        <input id="ea-consent" name="consent" type="checkbox" required>
+                                        I agree to receive updates about NeuraGlu and understand I can opt out anytime.
+                                       </label>
+
+                                       <button id="ea-submit" class="btn btn--brand" type="submit">
+                                        Send
+                                      </button>
+
+                                       <p id="ea-success" class="form-msg is-success" hidden>Thanks! We've received your request</p>
+                                       <p id="ea-error" class="form-msg is-error" hidden>Please check the fields and try again.</p>
+                                    </form>
+                                  </div>
+                                </section>
+
+                                <!-- FAQ (will fill details later) -->
+                                 <section class="section section--elev" id="faq">
+                                  <div class="container faq">
+                                      <h2>FAQ</h2>
+                                  <div class="faq-item">
+                                  <button class="faq-question">Does it work without a CGM?</button> 
+                                  <div class="faq-answer">
+                                  <p>Yes. You can manually enter glucose readings; NeuraGlu still computes personalized carb suggestions using your other inputs.</p>
+                                  </div>
+                               </div>
+                               <div class="faq-item">
+                          <button class="faq-question">How is my carb suggestion calculated?</button>
+                          <div class="faq-answer">
+                          <p>We combine your glucose trend, insulin timing, activity, weight/age, and past responses to estimate insulin sensitivity and hypo risk.</p>
+                          </div>
+                      </div>
+                      <div class="faq-item">
+                  <button class="faq-question">Is my data secure?</button>
+                  <div class="faq-answer">
+                  <p>We use encryption in transit and at rest. Only essential data is stored, and you control deletion at any time.</p>
+              </div>
+           </div>
+          <div class="faq-item">
+      <button class="faq-question">Which devices are supported?</button> 
+      <div class="faq-answer">
+          <p>Manual entry works today; CGM integrations are planned.</p>
+      </div>
+      </div>
+      </section>
+      </main>
+
+      <footer class="site-footer">
+  <div class="container footer__grid">
+    <img src="assets/logo.png" alt="NeuraGlu" class="logo" />
+    <small class="muted">
+      © NeuraGlu, 2025 • 
+      <a href="privacy.html">Privacy</a> • 
+      <a href="terms.html">Terms</a> • 
+      <a href="contact.html">Contact</a>
+    </small>
+  </div>
+</footer>
+
+              <script src="main.js"></script>
+              </body>
+              </html>

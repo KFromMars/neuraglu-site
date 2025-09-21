@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeuraGlu – Data Flow</title>
+
+    <!-- Fonts (same as index.html) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a href="index.html">
+          <img src="assets/logo.png" alt="NeuraGlu" class="logo" />
+         </a>
+        <nav aria-label="Primary">
+          <a href="index.html#features">Features</a>
+          <a href="index.html#how">How it works</a>
+          <a href="data-flow.html" class="is-active">Data flow</a>
+          <a href="index.html#faq">FAQ</a>
+          <a href="index.html#early" class="btn btn--primary">Get Early Access</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Page intro / overview -->
+      <section class="section dataflow-page" id="overview">
+        <div class="container">
+          <h1>Data Flow</h1>
+          <p class="muted">
+            How NeuraGlu ingests your data, estimates insulin sensitivity, predicts near-term movement,
+            and returns a precise carb suggestion in real time.
+          </p>
+
+          <!-- local page nav -->
+          <nav class="subnav" aria-label="Data Flow sections">
+            <a href="#inputs">Inputs</a>
+            <a href="#pipeline">Processing</a>
+            <a href="#model">Model</a>
+            <a href="#output">Output</a>
+            <a href="#privacy">Privacy</a>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Inputs -->
+      <section class="section" id="inputs">
+        <div class="container dataflow-grid">
+          <div>
+            <h2>Inputs we use</h2>
+            <p class="muted">You control what you share. These inputs improve accuracy and personalization.</p>
+            <ul class="bulleted">
+              <li><b>Blood Glucose</b> — CGM or manual entries</li>
+              <li><b>Insulin</b> — dose &amp; timing</li>
+              <li><b>Activity</b> — intensity &amp; duration</li>
+              <li><b>Weight &amp; Age</b> — baseline personalization</li>
+              <li><b>Carb Response History</b> — how your body reacts</li>
+            </ul>
+          </div>
+          <div>
+            <div class="inputs-visual" aria-label="Glucose trend diagram">
+  <svg id="trendSVG" viewBox="0 0 800 420" role="img" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <!-- Base path (subtle, always visible) -->
+    <path id="trendPath"
+          d="M40,80 
+             C220,120 220,300 380,340 
+             S700,320 760,90"
+          class="trend-path"/>
+
+    <!-- Overlay strokes that "draw in" as progress -->
+    <path id="progressRed"   d="M40,80 C220,120 220,300 380,340 S700,320 760,90" class="trend-path progress progress--red"/>
+    <path id="progressGreen" d="M40,80 C220,120 220,300 380,340 S700,320 760,90" class="trend-path progress progress--green"/>
+
+    <!-- Moving ball -->
+    <circle id="ball" r="10" cx="40" cy="80" class="trend-ball"/>
+  </svg>
+</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Processing pipeline -->
+      <section class="section section--elev" id="pipeline">
+        <div class="container">
+          <h2>Processing pipeline</h2>
+          <div class="grid-4">
+            <article class="card tilt reveal">
+              <div class="card__shine"></div>
+              <h3>1) Ingest</h3>
+              <p>Normalize readings, align timestamps, and validate ranges.</p>
+            </article>
+            <article class="card tilt reveal">
+              <div class="card__shine"></div>
+              <h3>2) Features</h3>
+              <p>Trend, rate of change, insulin-on-board, recent activity markers.</p>
+            </article>
+            <article class="card tilt reveal">
+              <div class="card__shine"></div>
+              <h3>3) Personalize</h3>
+              <p>Estimate ISF per user from history and context.</p>
+            </article>
+            <article class="card tilt reveal">
+              <div class="card__shine"></div>
+              <h3>4) Predict</h3>
+              <p>Short-horizon glucose movement + hypo risk scoring.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Model -->
+      <section class="section" id="model">
+        <div class="container dataflow-grid">
+          <div>
+            <h2>Model &amp; ISF</h2>
+            <p class="muted">
+              The model refines your insulin sensitivity factor (ISF) using history, context,
+              and recent responses to carbs. This drives a precise carb dose suggestion, not a generic range.
+            </p>
+            <ul class="bulleted">
+              <li>Adaptive ISF that updates with new data</li>
+              <li>Confidence bounds to avoid over- or under-treating</li>
+              <li>Real-time guardrails for safety</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Output -->
+      <section class="section section--elev" id="output">
+        <div class="container">
+          <h2>Output: precise carb suggestion</h2>
+          <p class="muted">
+            When hypo risk is detected, NeuraGlu returns a personalized carb amount with context (why, when, and how it was derived).
+          </p>
+          <div class="grid-4">
+            <article class="card">
+              <h3>Suggested carbs</h3>
+              <p>Personalized grams with an explanation of factors considered.</p>
+            </article>
+            <article class="card">
+              <h3>Timing</h3>
+              <p>Immediate vs staged intake depending on predicted movement.</p>
+            </article>
+            <article class="card">
+              <h3>Follow-up</h3>
+              <p>Optional recheck window and guardrails for retesting.</p>
+            </article>
+            <article class="card">
+              <h3>Adaptation</h3>
+              <p>The system learns from your response to improve next time.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy -->
+      <section class="section" id="privacy">
+        <div class="container">
+          <h2>Privacy &amp; security</h2>
+          <p class="muted">
+            Encryption in transit and at rest. Minimal data retention, user-controlled deletion, and transparent settings.
+          </p>
+          <a href="index.html#early" class="btn btn--primary">Get Early Access</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+  <div class="container footer__grid">
+    <img src="assets/logo.png" alt="NeuraGlu" class="logo" />
+    <small class="muted">
+      © NeuraGlu, 2025 • 
+      <a href="privacy.html">Privacy</a> • 
+      <a href="terms.html">Terms</a> • 
+      <a href="contact.html">Contact</a>
+    </small>
+  </div>
+</footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
