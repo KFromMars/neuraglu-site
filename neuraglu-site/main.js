@@ -514,4 +514,33 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const btn   = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (!btn || !links) { console.warn('nav toggle wiring missing'); return; }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = links.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+
+  // Close when clicking outside or a link
+  document.addEventListener('click', (e) => {
+    if (!links.classList.contains('is-open')) return;
+    if (!links.contains(e.target) && e.target !== btn) {
+      links.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  console.log('nav toggle ready'); // sanity check in Console
+});
+
 
