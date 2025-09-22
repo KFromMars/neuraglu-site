@@ -847,3 +847,35 @@ html, body { font-family: var(--font-sans); }
 .legal-container h1, .legal-container h2, .legal-container p, .legal-container li {
   font-family: var(--font-sans);
 }
+
+/* FAQ accordion */
+.faq-item { 
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  padding: 12px 0;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+/* collapsed by default */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .28s ease;
+}
+
+/* expanded when the parent gets .open */
+.faq-item.open .faq-answer {
+  max-height: 600px; /* big enough for your longest answer */
+}
